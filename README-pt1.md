@@ -10,8 +10,8 @@ and recommend followers.
 _Note: As you work through this practice, recall the new information we learned
 about adjacency lists and apply that to your strategies and solutions rather
 than taking an OOP approach. This will help you cement these new concepts into
-your knowledge base for practices and projects moving forward._  Note that you
-will still be using OOP to build other parts of this project, just not the graph itself.
+your knowledge base for practices and projects moving forward._  You will still
+be using OOP to build other parts of this project, just not the graph itself.
 
 ## Directions
 
