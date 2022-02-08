@@ -29,6 +29,7 @@ class SocialNetwork {
 
   getRecommendedFollows(userID, degrees) {
     // Your code here
+  }
 }
 
 module.exports = SocialNetwork;
