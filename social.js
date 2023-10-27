@@ -58,17 +58,53 @@ class SocialNetwork {
   getFollowers(userID) {
     // Your code here
 
-    let followers = new Set();
+    let followers = new Set();  // initialize a new set
 
-    for(let id in this.follows) {
-      if(this.follows[id].has(userID)) followers.add(Number(id));
+    for(let id in this.follows) {  // for all keys in this.follows
+      if(this.follows[id].has(userID)) followers.add(Number(id));  // if they are following, add to new set
     }
 
-    return followers;
+    return followers;  // return the followers set
   }
 
   getRecommendedFollows(userID, degrees) {
     // Your code here
+
+    // create a queue and enqueue a path to the starting node
+    const queue = [[userID]];
+
+    // creat a set to store visited nodes
+    const visited = new Set([userID]);
+
+    const friends = [];
+
+    // while the queue is not empty
+    while(queue.length > 0) {
+      // dequeue firth path
+      let currentPath = queue.shift();
+
+      // grab teh last node of the path
+      let lastNode = currentPath[currentPath.length - 1];
+
+      if(2 < currentPath.length && currentPath.length - 2 <= degrees) {
+        friends.push(lastNode);
+      }
+
+      let neighbors = this._getNeighbors(lastNode)
+
+      neighbors.forEach(el => {
+        if(!visited.has(el)) {
+          visited.add(el);
+          queue.push(currentPath.concat(el));
+        }
+      });
+    }
+    
+    return friends;
+  }
+
+  _getNeighbors(node) {
+    return this.follows[node];
   }
 }
 
